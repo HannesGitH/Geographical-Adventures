@@ -44,7 +44,7 @@ Shader "Custom/TrailTest2"
 
 			fixed4 frag (v2f i) : SV_Target
 			{
-				return _Colour * float4(1,1,1, 1-i.uv.x);
+				return _Colour * float4(1,1,1, 1-2*i.uv.x);
 			}
 			ENDCG
 		}

@@ -25,7 +25,7 @@ float3 waveCalc(float3 worldPos, inout float3 normal) {
 		float angle_xz = _Time.y * WaveNoiseSpeed * 0.01 + startAngle_xz;
 		float3 pos_xz = float3(cos(angle_xz), spherePos.y, sin(angle_xz));
 	
-		float startAngle_xy = atan2(spherePos.y, clmp(spherePos.x,0.001));
+		float startAngle_xy = atan2(spherePos.y, clmp(spherePos.x,0.21));
 		float angle_xy = _Time.y * WaveNoiseSpeed * 0.01 + startAngle_xy;
 		float3 pos_xy = float3(cos(angle_xy), sin(angle_xy), spherePos.z);
 
