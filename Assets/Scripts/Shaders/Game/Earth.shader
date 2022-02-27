@@ -30,6 +30,7 @@ Shader "Custom/Earth" {
 		_Refraction ("Refraction", Float) = -0.1
 
 		[Header(Vertex Waves)]
+		[Toggle]_VertexWavesEnabled("Enable", Float) = 1
 		WaveNoiseScale("Wave Noise Scale", Float) = 10
 		WaveNoiseSpeed("Wave Noise Speed", Float) = 0.1
 		WaveNoiseAmplitude("Wave Noise Amplitude", Float) = 0.1
@@ -101,6 +102,8 @@ Shader "Custom/Earth" {
 			float _WaveNormalScale;
 			float _Refraction;
 
+			float _VertexWavesEnabled;
+
 			// Foam
 			float _FoamSpeed;
 			float _FoamFrequency;
@@ -155,7 +158,8 @@ Shader "Custom/Earth" {
 				float3 worldPos = mul(unity_ObjectToWorld,v.vertex).xyz;
 				
 				float3 waveNormal = v.normal;
-				float3 wavePos = waveCalc(worldPos, waveNormal);
+
+				float3 wavePos = (_VertexWavesEnabled>0) ? waveCalc(worldPos, waveNormal) : worldPos;
 				v.normal = waveNormal;//
 				v.vertex = float4(wavePos, 1);
 	
@@ -383,7 +387,9 @@ Shader "Custom/Earth" {
 				v2f o;
 				float3 worldPos = mul(unity_ObjectToWorld,v.vertex).xyz;
 				float3 normal = 0;
-				float3 wavePos = waveCalc(worldPos, normal);
+				float3 wavePos = 
+				// waveCalc(worldPos, normal);
+				(_VertexWavesEnabled>0) ? waveCalc(worldPos, waveNormal) : worldPos;
 				v.vertex = float4(wavePos, 1);
 
 				UNITY_SETUP_INSTANCE_ID(v);

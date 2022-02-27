@@ -139,7 +139,9 @@ Material:
         m_Texture: {fileID: 2800000, guid: 5c3acfa5de7e76744a9bdaa676d4a5f4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
+    - VertexWavesEnabled: 0
     - WaveNoiseAmplitude: 4
     - WaveNoiseScale: 15
     - WaveNoiseSpeed: 0.75
@@ -183,6 +185,7 @@ Material:
     - _SpecularSmoothness: 0.12
     - _SrcBlend: 1
     - _UVSec: 0
+    - _VertexWavesEnabled: 0
     - _WaveNormalScale: 0.4
     - _WaveSpeed: 0.81
     - _WaveStrength: 0.657
